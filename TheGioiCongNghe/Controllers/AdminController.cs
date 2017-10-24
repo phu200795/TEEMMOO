@@ -82,13 +82,22 @@ namespace TheGioiCongNghe.Controllers
             return RedirectToAction("ListProtductModel", "Admin");
         }
         //-----------------------------------Product-manager--------------------------------------------//
+        
         //Danh Mục
         public ActionResult ListProductManager()
         {
             var product_manager = dbContext.Product_managers;
             return View(product_manager);
         }
-
+        public ActionResult DetailProductManager(int id)
+        {
+            var manager = dbContext.Product_managers.Where(m => m.Id == id);
+            var category = dbContext.Product_categorys;
+            ProductViewModels viewModel = new ProductViewModels();
+            viewModel.Product_Managers = manager;
+            viewModel.Product_Categorys = category;
+            return View(viewModel);
+        }
         //Tao Manager
         public ActionResult CreateProductManager()
         {
@@ -199,6 +208,17 @@ namespace TheGioiCongNghe.Controllers
         {
             var article_category = dbContext.Article_categorys;
             return View(article_category);
+        }
+        public ActionResult DetailArticleManager(int id)
+        {
+            var manager = dbContext.Article_managers.Where(m => m.Id == id);
+            var category = dbContext.Article_categorys;
+            var managercon = dbContext.Article_managers;
+            ProductViewModels viewModel = new ProductViewModels();
+            viewModel.Article_Managers = manager;
+            viewModel.Article_Categorys = category;
+            viewModel.Article_Managerss = managercon;
+            return View(viewModel);
         }
         //Tạo Categoty 
         public ActionResult CreateArticleCategory()

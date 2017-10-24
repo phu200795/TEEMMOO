@@ -1,1 +1,120 @@
-﻿
+﻿@model TheGioiCongNghe.ViewModels.ProductViewModels
+
+@{
+    ViewBag.Title = "DetailArticleManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section">
+    <div class="col-md-12 ors_main_body">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Article_Managers)
+                {
+                    <div class="col-md-9 ors_content_article_detail" id="layout_86">
+                        <meta name="description" content="">
+                        <meta name="keywords" content="">
+                        <font>@item.Title</font>
+                        <span class="article_created_date">@item.DateTime</span>
+                        <img class="img-responsive" src="@Url.Content(item.Article_image)">
+                        <article class="content">
+                            @item.Article_Description
+                        </article>
+                        <script>
+                            $(window).load(function () {
+                                var a = $("article.content img");
+                                for (i = 0; i
+                                    < a.length; i++) {
+                                    if (typeof $(a[i]).attr("alt") !== typeof undefined && $(a[i]).attr("alt") !== false) {
+                                        if ($(a[i]).attr("alt") != "") {
+                                            var b = "";
+                                            if ($(a[i]).parent().css("text-align") == "center") {
+                                                b = "margin: 0 auto;";
+                                            }
+                                            if ($(a[i]).parent().css("text-align") == "right") {
+                                                b = "margin: 0 0 0 auto;";
+                                            }
+                                            $("
+                                                < br >
+                                                <span style='"+b+"text-align:left;background: #f6f7f3;padding: 5px 10px;display:block;width:"+$(a[i]).width()+"px' class='ors_img_caption' >"+$(a[i]).attr("alt")+"</span>").insertAfter($(a[i]));
+                				                        }
+                                    }
+
+                                }
+
+                            });
+
+                        </script>
+                    </div>
+                }
+                <div class="col-md-3 ">
+                    <div class="row ors_article_category">
+                        <div class="col-md-12 addon_title">
+                            <div class="row">
+                                <font>Category</font>
+                            </div>
+                        </div>
+                        <div class="art_cat">
+                            <ul>
+                                @foreach (var item in Model.Article_Categorys)
+                                {
+                                    <li>
+                                        <a href="/Admin/DetailArticleManager/@item.Id">
+                                            @item.Title
+                                            <span>2</span>
+                                        </a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- / row-name -->
+                    <div class="row ors_new_blog" id="layout_89">
+                        <div id="fb-root"></div>
+                        <script>
+(function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, "script", "facebook-jssdk"));</script>
+                        <div class="item-article-category">
+                            <div class="col-md-12 addon_title">
+                                <div class="row">Blog</div>
+                            </div>
+                            <div class="article_list  ">
+                                @foreach (var item in Model.Article_Managerss)
+                                {
+                                    <div class="list_row">
+                                        <div class="col-md-12">
+                                            <article class="article_item">
+                                                <a href="/Admin/DetailArticleManager/@item.Id">
+                                                    <img class="img-responsive" src="@Url.Content(item.Article_image)">
+                                                </a>
+                                                <h3>
+                                                    <a class="view" href="/Admin/DetailArticleManager/@item.Id">Have you had any Surface Laptop quality control issues?</a>
+                                                </h3>
+                                                <span>@item.DateTime</span>
+
+                                                <p></p>
+                                            </article>
+                                        </div>
+                                        <!-- End .col-md* -->
+                                    </div>
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .item-article-category -->
+                </div>
+                <!-- / row-name -->
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
